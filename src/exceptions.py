@@ -1,0 +1,2 @@
+class CopyingError(Exception):
+    pass
