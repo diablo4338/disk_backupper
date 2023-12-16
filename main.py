@@ -3,10 +3,10 @@
 import os
 
 from src.dataclasses import Partition
-from src.decorators import handle_term
+from src.decorators import handle_term, handle_parsing_error
 from src.copying import copying
 from src.printing import print_choosen_partition
-from src.choosing import choose_interface, chhose_compression, choose_source
+from src.choosing import choose_interface, choose_compression, choose_source
 from src.utils import make_bash_script
 
 
@@ -15,7 +15,7 @@ def preparing_conditions() -> tuple[Partition, str, bool, bool]:
     os.system('clear')
     print_choosen_partition(partition)
     filename = input("\nInput filename for backup:\n")
-    use_compression = chhose_compression(partition, filename)
+    use_compression = choose_compression(partition, filename)
     if use_compression:
         filename = filename + '.gz'
     use_python = choose_interface(partition, filename)
@@ -28,10 +28,12 @@ def preparing_conditions() -> tuple[Partition, str, bool, bool]:
 
 
 @handle_term
+@handle_parsing_error
 def main():
     partition, filename, use_compression, use_python = preparing_conditions()
     if use_python:
         copying(partition, filename, use_compression)
+        print('Done')
     else:
         make_bash_script(partition, filename, use_compression)
 

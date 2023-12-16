@@ -24,7 +24,6 @@ def copy_without_compression(partition: Partition, filename: str):
         if result.returncode != 0:
             print(result.stderr.decode())
             raise CopyingError
-        print('Done')
 
 
 def copying(partition: Partition, filename: str, use_compression: bool):

@@ -2,11 +2,11 @@ import subprocess
 
 from src.dataclasses import Partition
 
-
 TEMPLATE_BASH_WITH_COMPRESSED = 'dd if={partition} bs=4M | pv -s {partition_size} -N raw -c | pigz -c | pv -N compressed -s {partition_size} > {filename}'
 TEMPLATE_BASH = 'dd if={partition} bs=4M | pv -s {partition_size} -N raw -c > {filename}'
 TEMPLATE_PYTHON_WITH_COMPRESSED = 'dd if={partition} bs=4M | pigz -c > {filename}'
 TEMPLATE_PYTHON = 'dd if={partition} bs=4M'
+
 
 def call_fdisk():
     res = subprocess.Popen(('fdisk', '-l'), stderr=subprocess.PIPE, stdout=subprocess.PIPE)

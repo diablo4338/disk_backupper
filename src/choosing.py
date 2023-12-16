@@ -4,11 +4,11 @@ import typing
 
 from src.dataclasses import Partition, Disk
 from src.parsing import find_disks, find_partitions
-
 from src.printing import print_choosen_partition, print_disks, print_partitions
+from src.exceptions import ParsingError
 
 
-def chhose_compression(partition: Partition, filename: str) -> bool:
+def choose_compression(partition: Partition, filename: str) -> bool:
     while 1:
         os.system('clear')
         print_choosen_partition(partition)
@@ -72,7 +72,7 @@ def choose_partition(partitions: list[Partition]) -> typing.Optional[Partition]:
 def choose_source() -> typing.Optional[Partition]:
     disks = find_disks()
     if not disks:
-        return
+        raise ParsingError
     disk = choose_disk(disks)
     partitions = find_partitions(disk)
     partition = choose_partition(partitions)
