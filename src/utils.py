@@ -8,7 +8,7 @@ TEMPLATE_PYTHON_WITH_COMPRESSED = 'dd if={partition} bs=4M | pigz -c > {filename
 TEMPLATE_PYTHON = 'dd if={partition} bs=4M'
 
 
-def call_fdisk():
+def call_fdisk() -> str:
     res = subprocess.Popen(('fdisk', '-l'), stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     responce, error = res.communicate()
     return responce.decode()
