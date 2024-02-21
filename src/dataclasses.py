@@ -5,12 +5,13 @@ from dataclasses import dataclass
 class Disk:
     description: str
     name: str
+    size: str
 
 
 @dataclass()
 class Partition:
     name: str
     human_size: str
-    size: int
+    size: str
     filesystem: str
     disk: Disk
