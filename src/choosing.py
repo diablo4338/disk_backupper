@@ -13,7 +13,7 @@ def choose_compression() -> bool:
         elif do_compress == 'n':
             return False
         else:
-            print("Wrong input, try againmake_code_for\n")
+            print("Wrong input, try again")
             time.sleep(2)
 
 
@@ -25,7 +25,7 @@ def choose_interface() -> InterfaceEnum:
         elif process_in_python == 'b':
             return InterfaceEnum.BASH
         else:
-            print("Wrong input, try again\n")
+            print("Wrong input, try again")
             time.sleep(2)
 
 

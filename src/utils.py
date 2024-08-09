@@ -35,5 +35,5 @@ def call_fdisk() -> str:
     if is_debug():
         return example
     res = subprocess.Popen(('fdisk', '-l'), stderr=subprocess.PIPE, stdout=subprocess.PIPE)
-    responce, error = res.communicate()
-    return responce.decode()
+    response, error = res.communicate()
+    return response.decode()

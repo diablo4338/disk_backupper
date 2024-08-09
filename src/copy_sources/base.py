@@ -76,9 +76,16 @@ n - exit
         if silent:
             self._filename = self._autogenerate_filename()
             return
-        os.system('clear')
-        print(self.get_top_message)
-        self._filename = input("\nInput filename for backup:\n")
+        while 1:
+            os.system('clear')
+            print(self.get_top_message)
+            filename = input("\nInput filename for backup:\n")
+            if not filename:
+                print("Filename can't be empty? try again")
+                time.sleep(2)
+                continue
+            self._filename = filename
+            break
 
     def select_compression(self):
         os.system('clear')
