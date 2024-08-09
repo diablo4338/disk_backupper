@@ -11,7 +11,8 @@ class BackupperBase:
     source: Disk | Partition = None
     _filename: str = None
     compression: bool = False
-    quick: bool = False
+    quick: bool = False  # Generate filename from device name, use compression, use python
+    simple: bool = False  # Generate filename from device name, not use compression, use python
     interface: InterfaceEnum = InterfaceEnum.PYTHON
     top_message: str = ''
 
@@ -22,7 +23,14 @@ class BackupperBase:
         while 1:
             os.system('clear')
             print(self.get_top_message)
-            choose = input("\nIs it correct? y/n\n")
+            choose = input(
+                """
+Is it correct?
+y - continue
+q - use quick mode
+s - use quick mode without compression
+n - exit
+""")
             if choose == 'y':
                 break
             elif choose == 'n':
@@ -30,6 +38,10 @@ class BackupperBase:
                 raise UserTerminate
             elif choose == 'q':
                 self.quick = True
+                break
+            elif choose == 's':
+                self.quick = True
+                self.simple = True
                 break
             else:
                 print("Wrong input, try again\n")
@@ -85,7 +97,8 @@ class BackupperBase:
             return
         self.select_filename(self.quick)
         if self.quick:
-            self.compression = True
+            if self.simple:
+                self.compression = True
             self.interface = InterfaceEnum.PYTHON
             self.copy_by_python()
             return
