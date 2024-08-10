@@ -2,7 +2,7 @@ import os
 import subprocess
 
 example = '''
-   Disk /dev/nvme0n1: 465,76 GiB, 500107862016 bytes, 976773168 sectors
+Disk /dev/nvme0n1: 465,76 GiB, 500107862016 bytes, 976773168 sectors
 Disk model: Samsung SSD 970 EVO Plus 500GB
 Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes

@@ -12,14 +12,14 @@ from src.enums import ActionEnum
 def select_disk() -> Disk:
     disks = find_disks()
     if not disks:
-        raise ParsingError
+        raise ParsingError("Disk list is empty. Check re pattern or you have root rights")
     return choose_disk(disks)
 
 
 def select_partition(disk: Disk) -> Partition:
     partitions = find_partitions(disk)
     if not partitions:
-        raise ParsingError
+        raise ParsingError("Partition list is empty. Check re pattern or you have root rights")
     return choose_partition(partitions)
 
 

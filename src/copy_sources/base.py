@@ -105,6 +105,8 @@ n - exit
         self.select_filename(self.quick)
         if self.quick:
             if self.simple:
+                self.compression = False
+            else:
                 self.compression = True
             self.interface = InterfaceEnum.PYTHON
             self.copy_by_python()

@@ -29,6 +29,6 @@ def handle_parsing_error(func):
         try:
             return func()
         except ParsingError as error:
-            print("Make sure what you using sudo or you are root. Error when parsing fdisk, exit...")
+            print(f"{error}")
 
     return wrapper

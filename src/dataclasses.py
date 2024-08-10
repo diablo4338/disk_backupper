@@ -6,6 +6,7 @@ class Disk:
     description: str
     name: str
     size: str
+    human_size: str
 
 
 @dataclass()
