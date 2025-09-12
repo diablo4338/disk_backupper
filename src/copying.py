@@ -4,6 +4,9 @@ from src.dataclasses import Partition, Disk
 from src.decorators import remove_file_if_fail
 from src.exceptions import CopyingError
 
+from src.utils import is_debug
+
+
 
 @remove_file_if_fail
 def copy_with_compression(device: Partition | Disk, filename: str):
@@ -29,6 +32,9 @@ def copy_without_compression(device: Partition | Disk, filename: str):
 
 
 def copying_disk_or_partition(device: Partition | Disk, filename: str, use_compression: bool):
+    if is_debug():
+        print("Debug mode. Code didnt copy anything")
+        return
     if use_compression:
         copy_with_compression(device, filename)
     else:
