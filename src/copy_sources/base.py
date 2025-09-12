@@ -81,9 +81,7 @@ n - exit
             print(self.get_top_message)
             filename = input("\nInput filename for backup:\n")
             if not filename:
-                print("Filename can't be empty? try again")
-                time.sleep(2)
-                continue
+                self._autogenerate_filename()
             self._filename = filename
             break
 
