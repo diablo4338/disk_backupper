@@ -5,7 +5,7 @@ from src.dataclasses import Disk, Partition
 
 
 def find_disks() -> list[Disk]:
-    pattern = re.compile(r'Disk (/dev/(?!loop\d+)\w+): (.+), \d+ \w+, (\d+) sectors\nDisk model: (.+)\n')
+    pattern = re.compile(r'Disk (/dev/(?!loop\d+)\w+): (.+), (\d+) bytes,.*\nDisk model: (.+)\n')
     result = re.findall(pattern, call_fdisk())
     return [Disk(name=i[0], size=i[2], description=i[3], human_size=i[1]) for i in result]
 
