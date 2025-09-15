@@ -81,7 +81,7 @@ n - exit
             print(self.get_top_message)
             filename = input("\nInput filename for backup:\n")
             if not filename:
-                self._autogenerate_filename()
+                filename = self._autogenerate_filename()
             self._filename = filename
             break
 
